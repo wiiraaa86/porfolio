@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WIRA - Cyber Samurai Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Share+Tech+Mono&family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="cyber.css" />
+  </head>
+  <body>
+
+<div id="custom-cursor">
+    <!-- Titik Pusat Laser Bidikan -->
+    <div class="cursor-dot"></div>
+
+    <!-- Perakitan Crosshair & Ring yang Berputar Bersama (Atas, Bawah, Kiri, Kanan) -->
+    <div class="sniper-spin-assembly">
+        <div class="cursor-ring"></div>
+        <span class="cursor-line line-top"></span>
+        <span class="cursor-line line-right"></span>
+        <span class="cursor-line line-bottom"></span>
+        <span class="cursor-line line-left"></span>
+    </div>
+
+    <!-- Ring Dial Luar (Berputar Berlawanan) -->
+    <div class="sniper-outer-ring"></div>
+
+    <!-- 4 Sudut Bracket Optik Sniper [  ] -->
+    <div class="sniper-brackets">
+        <span class="bracket bracket-tl"></span>
+        <span class="bracket bracket-tr"></span>
+        <span class="bracket bracket-bl"></span>
+        <span class="bracket bracket-br"></span>
+    </div>
+
+    <!-- Status Digital HUD Scope Sniper -->
+    <div class="sniper-hud"><span class="hud-target-text">AIM</span></div>
+</div>
+    
+    <!-- ================== BAGIAN 1: INTRO SCREEN ================== -->
+    <section id="introScreen">
+      <div class="corner top-left"></div>
+      <div class="corner top-right"></div>
+      <div class="corner bottom-left"></div>
+      <div class="corner bottom-right"></div>
+
+      <div class="center-line-left" id="gateLeft"></div>
+      <div class="center-line-right" id="gateRight"></div>
+
+      <div class="bg-kanji left" style="font-size: 250px; margin-bottom: 120px; margin-left: 30px; color: rgb(11, 11, 11)">侍</div>
+      <div class="bg-kanji right" style="font-size: 250px; margin-bottom: 120px; margin-right: 30px; color: rgb(11, 11, 11)">武</div>
+
+      <main class="main-container" id="mainContent">
+        <div class="logo-group">
+          <svg class="sword-icon" viewBox="0 0 24 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="0" width="4" height="60" rx="1" />
+            <rect x="0" y="60" width="24" height="4" rx="1" />
+            <rect x="8" y="64" width="8" height="25" />
+            <circle cx="12" cy="94" r="4" />
+          </svg>
+
+          <h1 class="title">AETHERA</h1>
+        </div>
+
+        <h2 class="subtitle">CYBER SAMURAI DEVELOPER</h2>
+        <div class="gradient-line"></div>
+        <p class="system-status">システム準備完了</p>
+
+        <button class="cyber-button" id="enterBtn"><span class="btn-icon">|</span> 入る • ENTER</button>
+
+        <p class="hint-text"><span>▶</span> KLIK UNTUK MEMASUKI ARENA</p>
+      </main>
+    </section>
+
+    <div id="arenaScreen" style="display: none; opacity: 0">
+      <nav class="navbar">
+        <div class="logo">AETHERA<span class="dot">.</span></div>
+        <ul class="nav-links">
+          <div class="nav-indicator"></div>
+          
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#certificate">Certificate</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- ================== BAGIAN 2: ARENA SCREEN ================== -->
+      <main id="home" class="arena-container">
+        <button class="mute-btn floating-mute-btn" id="muteBtn">
+          <svg id="speakerIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <div class="left-section">
+          <div class="badge-role"><span class="red-dot"></span> TEKNIK INFORMATIKA</div>
+          <p class="greeting">Hi, saya Wira</p>
+          <h1 class="hero-name">PUTU WIRA SAPUTRA</h1>
+          <h2 class="typewriter"><span id="typed-text"></span><span class="cursor">|</span></h2>
+          <p class="description">
+            specialize in troubleshooting and repairing software and hardware for Android and Apple devices. Complementing my hands-on technical background, my studies in Informatics equip me with strong coding skills and a keen eye for
+            UI/UX design, allowing me to build and design intuitive, user-centric digital solutions
+          </p>
+          <div class="action-buttons">
+            <button class="btn btn-primary">VIEW PORTFOLIO</button>
+            <button class="btn btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              DOWNLOAD CV
+            </button>
+            <button class="btn btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              HIRE ME
+            </button>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h3><span class="counter" data-target="3">0</span>+</h3>
+              <p>Tahun<br />Pengalaman</p>
+            </div>
+            <div class="stat-item">
+              <h3><span class="counter" data-target="10">0</span>+</h3>
+              <p>Project Selesai</p>
+            </div>
+            <div class="stat-item">
+              <h3><span class="counter" data-target="15">0</span>+</h3>
+              <p>Tech Stack<br />Dikuasai</p>
+            </div>
+            <div class="stat-item">
+              <h3><span class="counter" data-target="2">0</span></h3>
+              <p>Sertifikasi</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-section">
+          <div class="tech-frame">
+            <div class="frame-corner top-left"></div>
+            <div class="frame-corner top-right"></div>
+            <div class="frame-corner bottom-left"></div>
+            <div class="frame-corner bottom-right"></div>
+            <div class="tag-top-right">| FULLSTACK DEV</div>
+
+            <a href="https://wa.me/6282398401626" target="_blank">
+              <img src="images/images1.jpeg" alt="Foto Profil" class="profile-img" />
+            </a>
+
+            <div class="tag-bottom-left"><span class="green-dot"></span> ONLINE</div>
+          </div>
+          <p class="hint-hover">⚔ ARAHKAN KURSOR UNTUK NGOBROL</p>
+        </div>
+      </main>
+
+      <!-- ================== BAGIAN 3: ABOUT SCREEN (CHARACTER PROFILE) ================== -->
+      <section class="about-section" id="about">
+        <div class="section-header">
+          <div class="badge-dossier"><span class="cyan-dot"></span> DOSSIER</div>
+          <h2 class="section-title" id="about">CHARACTER PROFILE</h2>
+        </div>
+
+        <div class="profile-grid">
+          <!-- Kolom Kiri: Terminal Bio & Stats -->
+          <div class="cyber-box profile-main">
+            <div class="terminal-header">
+              <span class="term-title">&gt;_ PROFILE.EXE - BIO_LOG</span>
+              <div class="term-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot cyan"></span></div>
+            </div>
+            <div class="bio-content">
+              <p class="cmd"><span class="red-text">$</span> whoami</p>
+              <h3>PUTU WIRA SAPUTRA</h3>
+              <p>
+                Saya adalah mahasiswa Informatika di Universitas Cokroaminoto Palopo yang memadukan pendidikan akademis dengan pengalaman di dunia kerja. Berawal dari minat pada rekayasa perangkat lunak, saya kini fokus membangun aplikasi
+                web menggunakan HTML, CSS, JavaScript, dan PHP.
+              </p>
+              <p>
+                Selain keahlian koding, saya memiliki insting yang tajam dalam ranah UI/UX Design. Saya terbiasa merancang *wireframe* dan *layout states* menggunakan Figma dan Balsamiq, serta mengeksplorasi penggunaan AI generatif untuk
+                memproduksi visual vertikal dan aset animasi yang *user-centric*.
+              </p>
+              <p>Saya juga memiliki keahlian di bidang perbaikan ponsel baik software mapupun hardware Android and Iphone Device, dari tahap trouble shooting hingga penanganan pemecahan masalah yang kompleks.</p>
+            </div>
+
+            <div class="combat-stats">
+              <h4 class="box-title"><span class="red-icon">⚡</span> COMBAT STATS</h4>
+
+              <div class="stat-row">
+                <div class="stat-labels"><span>FRONTEND DEV</span><span class="cyan-text stat-counter" data-target="88">0</span></div>
+                <div class="progress-bg"><div class="progress-fill" data-width="88%"></div></div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-labels"><span>UI / UX DESIGN</span><span class="cyan-text stat-counter" data-target="92">0</span></div>
+                <div class="progress-bg"><div class="progress-fill" data-width="92%"></div></div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-labels"><span>BACKEND & SQL</span><span class="cyan-text stat-counter" data-target="75">0</span></div>
+                <div class="progress-bg"><div class="progress-fill" data-width="75%"></div></div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-labels"><span>AI PROMPTING</span><span class="cyan-text stat-counter" data-target="85">0</span></div>
+                <div class="progress-bg"><div class="progress-fill" data-width="85%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: ID, Arsenal, Academy -->
+          <div class="profile-sidebar">
+            <!-- ID DATA -->
+            <div class="cyber-box sidebar-box">
+              <h4 class="box-title"><span class="red-icon">✜</span> ID DATA</h4>
+              <div class="id-grid">
+                <div class="id-item">
+                  <span class="id-icon">👤</span>
+                  <div><span class="id-label">CLASS</span><span class="id-value">Web Dev & UI/UX Designer</span></div>
+                </div>
+                <div class="id-item">
+                  <span class="id-icon">🗡</span>
+                  <div><span class="id-label">GUILD</span><span class="id-value">Informatic Engineer</span></div>
+                </div>
+                <div class="id-item">
+                  <span class="id-icon">📍</span>
+                  <div><span class="id-label">REGION</span><span class="id-value">Indonesia</span></div>
+                </div>
+                <div class="id-item">
+                  <span class="id-icon">🏅</span>
+                  <div><span class="id-label">TITLE</span><span class="id-value">Cyber Samurai</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ARSENAL -->
+            <div class="cyber-box sidebar-box">
+              <h4 class="box-title"><span class="red-icon">|</span> ARSENAL</h4>
+              <div class="arsenal-tags">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Figma</span>
+                <span class="tech-tag">MYSQL</span>
+                <span class="tech-tag">JAVA</span>
+                <span class="tech-tag">WordPress</span>
+                <span class="tech-tag">Gemini-AI</span>
+                <span class="tech-tag">Tecnician Mobile Services</span>
+              </div>
+            </div>
+
+            <!-- ACADEMY -->
+            <div class="cyber-box sidebar-box">
+              <h4 class="box-title"><span class="red-icon">📖</span> ACADEMY</h4>
+              <div class="academy-content">
+                <div class="academy-header">
+                  <h5>UNIVERSITAS COKROAMINOTO PALOPO</h5>
+                  <span class="year">2024 - 2028</span>
+                </div>
+                <p class="degree">Teknik Informatika - Sarjana Komputer</p>
+                <p class="academy-desc">Mempelajari dasar sistem informasi, algoritma, basis data struktural, dan perancangan antarmuka pengguna berbasis teknologi mutakhir dengan menerapkan teknologi terkini.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== BAGIAN 4: SKILLS SCREEN (SKILL LOADOUT) ================== -->
+      <section class="skills-section" id="skills">
+        <div class="section-header">
+          <div class="badge-dossier"><span class="red-dot"></span> HERO SELECT</div>
+          <h2 class="section-title" id="skills">SKILL LOADOUT</h2>
+          <p class="section-subtitle">Pilih cabang keahlian untuk melihat spesifikasi detail sang hero</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="hero-card">
+            <div class="lv-badge">
+              <span class="lv-text">LV</span>
+              <span class="lv-num">99</span>
+            </div>
+            <img src="images/images1.jpeg" alt="Hero Portrait" class="hero-image" />
+
+            <!-- Info overlay di bawah gambar -->
+            <div class="hero-overlay">
+              <h3 class="hero-card-name">PUTU WIRA SAPUTRA</h3>
+              <p class="hero-card-role"><span class="cyan-text">|</span> Cyber Samurai - Web & UI/UX</p>
+              <div class="hero-power">
+                <span class="power-label">POWER</span>
+                <div class="power-bg"><div class="power-fill" data-width="85%"></div></div>
+                <span class="power-num cyan-text power-counter" data-target="85">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Skill Branches & Detail -->
+          <div class="skills-panel">
+            <h4 class="panel-title">SKILL BRANCHES</h4>
+
+            <!-- Daftar Kategori Skill -->
+            <ul class="branch-list">
+              <!-- Tab 1 -->
+              <li class="branch-item active" data-tab="tab-frontend" data-image="images/Images1.jpeg">
+                <div class="branch-icon">🪟</div>
+                <div class="branch-info">
+                  <h5>FRONTEND & UI/UX</h5>
+                  <p>HTML, CSS, JS, Figma, Laravel</p>
+                </div>
+                <div class="branch-score branch-counter" data-target="88">0</div>
+              </li>
+
+              <!-- Tab 2 -->
+              <li class="branch-item" data-tab="tab-backend" data-image="images/images2.jpeg">
+                <div class="branch-icon">⚙️</div>
+                <div class="branch-info">
+                  <h5>BACKEND & DATABASE</h5>
+                  <p>PHP, Java, SQL Databases</p>
+                </div>
+                <div class="branch-score branch-counter" data-target="75">0</div>
+              </li>
+
+              <!-- Tab 3 -->
+              <li class="branch-item" data-tab="tab-tools" data-image="images/images3.jpeg">
+                <div class="branch-icon">🛠️</div>
+                <div class="branch-info">
+                  <h5>AI & TOOLS</h5>
+                  <p>Gen-AI, Prompt Engineering, WordPress</p>
+                </div>
+                <div class="branch-score branch-counter" data-target="85">0</div>
+              </li>
+
+              <!-- Tab 4 -->
+              <li class="branch-item" data-tab="tab-tecnician" data-image="images/images4.jpeg">
+                <div class="branch-icon">🛠️</div>
+                <div class="branch-info">
+                  <h5>REPAIR GADGET</h5>
+                  <p>Repair, Trouble Shooting Android Aplle Device</p>
+                </div>
+                <div class="branch-score branch-counter" data-target="88">0</div>
+              </li>
+            </ul>
+
+            <!-- Detail Bar: Frontend -->
+            <div class="branch-detail-content active" id="tab-frontend">
+              <div class="detail-header">
+                <h5>🪟 FRONTEND & UI/UX</h5>
+                <span class="avg-badge">AVG <span class="detail-counter" data-target="88">0</span></span>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>HTML & CSS</span><span class="cyan-text detail-counter" data-target="95">0</span></div>
+                <!-- Ubah style="width:..." menjadi data-width="..." -->
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="95%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>JavaScript (JS)</span><span class="cyan-text detail-counter" data-target="85">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="85%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Figma & Balsamiq (UI/UX)</span><span class="cyan-text detail-counter" data-target="92">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="92%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Laravel</span><span class="cyan-text detail-counter" data-target="80">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="80%"></div></div>
+              </div>
+            </div>
+
+            <!-- Detail Bar: Backend -->
+            <div class="branch-detail-content" id="tab-backend">
+              <div class="detail-header">
+                <h5>⚙️ BACKEND & DATABASE</h5>
+                <span class="avg-badge">AVG <span class="detail-counter" data-target="75">0</span></span>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>PHP</span><span class="cyan-text detail-counter" data-target="80">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="80%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Java</span><span class="cyan-text detail-counter" data-target="70">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="70%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>SQL Database</span><span class="cyan-text detail-counter" data-target="78">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="78%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Database Relationships</span><span class="cyan-text detail-counter" data-target="78">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="78%"></div></div>
+              </div>
+            </div>
+
+            <!-- Detail Bar: AI & Tools -->
+            <div class="branch-detail-content" id="tab-tools">
+              <div class="detail-header">
+                <h5>🛠️ AI & TOOLS</h5>
+                <span class="avg-badge">AVG <span class="detail-counter" data-target="85">0</span></span>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Generative AI (Images/Video)</span><span class="cyan-text detail-counter" data-target="90">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="90%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>AI Prompt Engineering</span><span class="cyan-text detail-counter" data-target="88">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="88%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>WordPress</span><span class="cyan-text detail-counter" data-target="82">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="82%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>GitHub (Version Control)</span><span class="cyan-text detail-counter" data-target="80">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="80%"></div></div>
+              </div>
+            </div>
+
+            <!-- Detail Bar: Repair Gadgets -->
+            <div class="branch-detail-content" id="tab-tecnician">
+              <div class="detail-header">
+                <h5>🔧 REPAIR GADGETS</h5>
+                <span class="avg-badge">AVG <span class="detail-counter" data-target="85">0</span></span>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Software Android/Apple</span><span class="cyan-text detail-counter" data-target="90">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="90%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Hardware Android/Apple</span><span class="cyan-text detail-counter" data-target="88">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="88%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Troubleshooting</span><span class="cyan-text detail-counter" data-target="82">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="82%"></div></div>
+              </div>
+              <div class="skill-bar-item">
+                <div class="bar-labels"><span>Part Replacement</span><span class="cyan-text detail-counter" data-target="95">0</span></div>
+                <div class="s-progress-bg"><div class="s-progress-fill" data-width="95%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- File Audio -->
+    <audio id="bgMusic" loop>
+      <source src="musik.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="cyber.js"></script>
+  </body>
+</html>

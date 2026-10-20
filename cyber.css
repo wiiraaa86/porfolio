@@ -1,0 +1,1635 @@
+:root {
+  /* Variabel Arena */
+  --bg-dark: #070707;
+  --red-main: #c90014;
+  --red-dim: rgba(201, 0, 20, 0.15);
+  --cyan: #00e5ff;
+  --text-white: #f0f0f0;
+  --text-grey: #a0a0a0;
+  --border-color: #2a2a2a;
+
+  /* Variabel Intro */
+  --bg-intro: #030303;
+  --accent-red-dim: rgba(201, 0, 20, 0.3);
+  --accent-blue: #0055ff;
+  --text-dark-bg: #0a0505;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: linear-gradient(var(--red-dim) 1px, transparent 1px), linear-gradient(90deg, var(--red-dim) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center;
+}
+
+/* =========================================
+   BAGIAN 1: LAYAR AWAL (INTRO SCREEN)
+========================================= */
+#introScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-intro);
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 9999;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Dekorasi Intro */
+.corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-color: var(--accent-red-dim);
+  border-style: solid;
+  border-width: 0;
+}
+
+.top-left {
+  top: 20px;
+  left: 20px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.top-right {
+  top: 20px;
+  right: 20px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+
+.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+
+.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+/* Garis Pemisah (Gerbang) */
+.center-line-left,
+.center-line-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: var(--accent-red-dim);
+  z-index: 0;
+  transition: transform 2.5s cubic-bezier(0.65, 0, 0.15, 1);
+}
+
+.center-line-left {
+  transform: translateX(-50%);
+}
+
+.center-line-right {
+  transform: translateX(-50%);
+}
+
+.center-line-left.open-gate {
+  transform: translateX(-50vw);
+}
+
+.center-line-right.open-gate {
+  transform: translateX(50vw);
+}
+
+/* Background Kanji */
+.bg-kanji {
+  position: absolute;
+  bottom: -5vh;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 25vw;
+  color: var(--text-dark-bg);
+  font-weight: 700;
+  z-index: -1;
+  line-height: 1;
+  user-select: none;
+}
+
+.bg-kanji.left {
+  left: 2vw;
+}
+
+.bg-kanji.right {
+  right: 2vw;
+}
+
+/* Konten Utama Intro */
+.main-container {
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: introSlideDown 0.8s ease-out forwards;
+}
+
+.sword-icon {
+  width: 16px;
+  height: auto;
+  fill: var(--red-main);
+}
+
+h1.title {
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h2.subtitle {
+  font-family: "Share Tech Mono", monospace;
+  color: var(--red-main);
+  font-size: 0.9rem;
+  letter-spacing: 12px;
+  margin-left: 12px;
+  margin-bottom: 25px;
+  opacity: 0;
+  animation: introFadeIn 0.8s ease-out 0.3s forwards;
+}
+
+.gradient-line {
+  width: 250px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--red-main) 0%, var(--accent-blue) 100%);
+  margin: 0 auto 25px auto;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: introGrowLine 3s cubic-bezier(0.65, 0, 0.15, 1) 0.5s forwards;
+}
+
+.system-status {
+  font-family: "Noto Sans JP", sans-serif;
+  color: var(--text-grey);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 35px;
+  opacity: 0;
+  animation: introFadeIn 0.8s ease-out 0.9s forwards;
+}
+
+.cyber-button {
+  background-color: #9e000e;
+  color: #fff;
+  border: none;
+  padding: 16px 45px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  transition: all 0.3s ease;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: introSlideUp 0.8s ease-out 1.2s forwards;
+}
+
+.cyber-button:hover {
+  background-color: var(--red-main);
+  transform: scale(1.05);
+}
+
+.cyber-button .btn-icon {
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+.hint-text {
+  font-family: "Share Tech Mono", monospace;
+  color: var(--text-grey);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  opacity: 0;
+  animation:
+    introFadeIn 0.8s ease-out 1.5s forwards,
+    slowBlink 3s infinite ease-in-out 1.5s;
+}
+
+.hint-text span {
+  font-size: 0.6rem;
+  margin-right: 5px;
+}
+
+@keyframes slowBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* =========================================
+   BAGIAN 2: ARENA SCREEN (PORTFOLIO)
+========================================= */
+#arenaScreen {
+  animation: fadeInPage 1s ease-in-out forwards;
+}
+
+/* ================== NAVBAR ================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0c0c0c;
+  padding: 12px 40px;
+
+  /* --- PENGATURAN POSISI MENGAMBANG (FIXED) --- */
+  position: fixed;
+  top: 25px; /* Jarak dari atas layar */
+  left: 0;
+  right: 0;
+  margin: 0 auto; /* Memusatkan elemen fixed */
+  z-index: 999; /* Pastikan selalu berada di lapisan paling atas */
+  transition: transform 0.4s ease-in-out; /* Animasi mulus saat muncul/hilang */
+
+  width: 90%;
+  max-width: 1100px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+/* Kelas yang dipicu oleh JavaScript saat layar di-scroll ke bawah */
+.navbar.navbar-hidden {
+  transform: translateY(-150%); /* Menggeser navbar keluar layar ke arah atas */
+}
+
+.logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.logo .dot {
+  color: var(--red-main);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+  align-items: center;
+  background: transparent;
+  padding: 0;
+  border: none;
+  font-size: 1px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-grey);
+  font-size: 0.85rem;
+  padding: 3px 13px; /* Memperkecil padding teks agar tidak terlalu memakan tempat */
+  border-radius: 30px;
+  border: 1px solid transparent;
+  transition: color 0.9s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-indicator {
+  position: absolute;
+  top: 9px; /* Memberikan jarak aman di bagian atas */
+  bottom: 9px; /* Memberikan jarak aman di bagian bawah */
+
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--red-main);
+  border-radius: 28px; /* Membuat sudut kapsul lebih rapi */
+  z-index: 1;
+  pointer-events: none;
+  transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+}
+
+.nav-links a::after {
+  display: none;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-white);
+  font-weight: 600;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.mute-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-white);
+
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.mute-btn:hover {
+  border-color: var(--red-main);
+}
+
+.arena-container {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+  gap: 50px;
+  min-height: calc(100vh - 100px);
+  position: relative;
+}
+
+.floating-mute-btn {
+  position: fixed;
+  top: 120px;
+  right: 5%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+/* Kolom Kiri */
+.left-section {
+  flex: 1;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideRight 0.8s ease-out 0.6s forwards;
+}
+
+.badge-role {
+  display: inline-block;
+  background-color: rgba(201, 0, 20, 0.1);
+  color: var(--red-main);
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-family: "Share Tech Mono", monospace;
+  border: 1px solid var(--red-dim);
+  margin-bottom: 20px;
+}
+
+.red-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--red-main);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.greeting {
+  color: var(--cyan);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.hero-name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.typewriter {
+  color: var(--red-main);
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.description {
+  color: var(--text-grey);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.btn {
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--red-main);
+  color: white;
+  border: 1px solid var(--red-main);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+}
+
+.btn-primary:hover {
+  background-color: #a00010;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-white);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+  border-color: var(--text-grey);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.stats-grid {
+  display: flex;
+  gap: 40px;
+}
+
+.stat-item h3 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.stat-item p {
+  color: var(--text-grey);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* Kolom Kanan (Profil) */
+.right-section {
+  margin-right: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideLeft 0.8s ease-out 0.9s forwards;
+}
+
+.tech-frame {
+  position: relative;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 380px;
+  height: 495px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: floating 4s ease-in-out infinite;
+}
+
+.profile-img {
+  width: 98%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.frame-corner {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-color: var(--red-main);
+  border-style: solid;
+  border-width: 0;
+  z-index: 5;
+}
+
+.tech-frame .top-left {
+  top: -2px;
+  left: -2px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.tech-frame .top-right {
+  top: -2px;
+  right: -2px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.tech-frame .bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.tech-frame .bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+.tag-top-right {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background-color: #000;
+  border: 1px solid var(--red-main);
+  color: var(--red-main);
+  padding: 4px 10px;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.7rem;
+  z-index: 10;
+}
+
+.tag-bottom-left {
+  position: absolute;
+  bottom: -12px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  padding: 6px 12px;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.green-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00ff88;
+}
+
+.hint-hover {
+  font-family: "Share Tech Mono", monospace;
+  color: #ff0000;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  margin-top: 40px;
+  animation:
+    floating 4s ease-in-out infinite,
+    hintBlink 2s ease-in-out infinite;
+}
+
+/* Kumpulan Animasi Arena */
+@keyframes fadeInPage {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+@keyframes hintBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* =========================================
+   ANIMASI MASUK LAYAR AWAL (INTRO)
+========================================= */
+@keyframes introSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes introGrowLine {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* =========================================
+   BAGIAN 3: ABOUT SECTION (CHARACTER PROFILE)
+========================================= */
+.about-section {
+  padding: 80px 10%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.badge-dossier {
+  display: inline-block;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  padding: 5px 15px;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.75rem;
+  margin-bottom: 15px;
+  background: rgba(0, 229, 255, 0.1);
+}
+.cyan-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--cyan);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.section-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--red-main);
+  letter-spacing: 2px;
+}
+
+/* Grid Layout */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+}
+
+/* Kotak Cyberpunk Umum */
+.cyber-box {
+  background-color: #0c0c0c;
+  border: 1px solid var(--border-color);
+  /* Potongan sudut ala cyberpunk */
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+/* --- KOLOM KIRI (TERMINAL) --- */
+.profile-main {
+  display: flex;
+  flex-direction: column;
+}
+.terminal-header {
+  background-color: #151515;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.term-title {
+  font-family: "Share Tech Mono", monospace;
+  color: var(--text-grey);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+.term-dots .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+.term-dots .red {
+  background-color: #ff5f56;
+}
+.term-dots .yellow {
+  background-color: #ffbd2e;
+}
+.term-dots .cyan {
+  background-color: #27c93f;
+}
+
+.bio-content {
+  padding: 30px;
+}
+.bio-content .cmd {
+  font-family: "Share Tech Mono", monospace;
+  color: var(--text-white);
+  margin-bottom: 15px;
+}
+.red-text {
+  color: var(--red-main);
+}
+.bio-content h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.bio-content p {
+  color: var(--text-grey);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* Combat Stats */
+.combat-stats {
+  padding: 0 30px 30px 30px;
+}
+.box-title {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: var(--text-white);
+}
+.red-icon {
+  color: var(--red-main);
+  margin-right: 8px;
+}
+
+.stat-row {
+  margin-bottom: 15px;
+}
+.stat-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  color: var(--text-white);
+}
+.cyan-text {
+  color: var(--cyan);
+}
+.progress-bg {
+  width: 100%;
+  height: 6px;
+  background-color: #1a1a1a;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0; /* Lebar awal 0 */
+  background: linear-gradient(90deg, var(--cyan) 0%, #0088ff 100%);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+  transition: width 1.2s cubic-bezier(0.65, 0, 0.15, 1); /* Efek meluncur halus */
+}
+
+/* --- KOLOM KANAN (SIDEBAR) --- */
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.sidebar-box {
+  padding: 25px;
+}
+
+/* ID Data Grid */
+.id-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.id-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.id-icon {
+  font-size: 1.2rem;
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+.id-label {
+  display: block;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.65rem;
+  color: var(--text-grey);
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.id-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Arsenal Tags */
+.arsenal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tech-tag {
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-family: "Share Tech Mono", monospace;
+  color: var(--cyan);
+  background: rgba(0, 229, 255, 0.05);
+  transition: 0.3s;
+}
+.tech-tag:hover {
+  background: var(--cyan);
+  color: #000;
+}
+
+/* Academy */
+.academy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.academy-header h5 {
+  font-size: 0.95rem;
+  color: var(--text-white);
+}
+.year {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: 2px 6px;
+}
+.degree {
+  font-size: 0.85rem;
+  color: var(--text-grey);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.academy-desc {
+  font-size: 0.8rem;
+  color: var(--text-grey);
+  line-height: 1.6;
+}
+
+/* Responsif untuk layar kecil (HP) */
+@media (max-width: 900px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-section {
+    padding: 40px 5%;
+  }
+}
+
+/* =========================================
+   BAGIAN 4: SKILLS SECTION (SKILL LOADOUT)
+========================================= */
+.skills-section {
+  padding: 80px 10%;
+  min-height: 100vh;
+  position: relative;
+}
+.section-subtitle {
+  color: var(--text-grey);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+/* Grid Layout */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* Kolom kanan lebih lebar */
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* --- KARTU HERO (KIRI) --- */
+.hero-card {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #050505;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 500px;
+}
+.lv-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(201, 0, 20, 0.8);
+  border: 1px solid var(--red-main);
+  color: white;
+  padding: 5px 10px;
+  font-family: "Share Tech Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+.lv-text {
+  font-size: 0.6rem;
+}
+.lv-num {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  filter: contrast(1.1) brightness(0.85);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hero-image.fade-img {
+  opacity: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 60%, transparent 100%);
+  padding: 30px 20px 20px 20px;
+  z-index: 5;
+}
+.hero-card-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.hero-card-role {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--text-grey);
+  margin-bottom: 15px;
+}
+.hero-power {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.8rem;
+}
+.power-bg {
+  flex: 1;
+  height: 4px;
+  background-color: #222;
+}
+.power-fill {
+  height: 100%;
+  width: 0; /* Mulai dari 0 */
+  background-color: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  /* Tambahkan transisi agar bisa bergerak mulus */
+  transition: width 1.2s cubic-bezier(0.65, 0, 0.15, 1);
+}
+
+/* --- SKILL PANEL (KANAN) --- */
+.skills-panel {
+  background-color: rgba(10, 10, 10, 0.8);
+  border: 1px solid var(--border-color);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.panel-title {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.9rem;
+  color: var(--text-grey);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* Branch List (Kategori) */
+.branch-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.branch-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+
+  /* Tambahan untuk animasi: disembunyikan di awal */
+  opacity: 0;
+}
+
+.branch-item:hover {
+  border-color: #444;
+  background: rgba(255, 255, 255, 0.05);
+}
+.branch-item.active {
+  border-color: var(--red-main);
+  background: rgba(201, 0, 20, 0.1);
+  border-left: 4px solid var(--red-main);
+}
+.branch-icon {
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+.branch-info {
+  flex: 1;
+}
+.branch-info h5 {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: var(--text-white);
+}
+.branch-info p {
+  font-size: 0.75rem;
+  color: var(--text-grey);
+}
+.branch-score {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--text-grey);
+}
+.branch-item.active .branch-score {
+  color: var(--red-main);
+}
+
+/* Detail Konten */
+.branch-detail-content {
+  display: none; /* Disembunyikan secara default */
+  animation: fadeInPage 0.5s ease-in-out forwards;
+}
+.branch-detail-content.active {
+  display: block; /* Hanya muncul jika class active ditambahkan */
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.detail-header h5 {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 1rem;
+  color: var(--text-white);
+}
+.avg-badge {
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  padding: 4px 10px;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.75rem;
+}
+
+/* Mini Progress Bars */
+.skill-bar-item {
+  margin-bottom: 15px;
+}
+.bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+.s-progress-bg {
+  width: 100%;
+  height: 6px;
+  background-color: #1a1a1a;
+}
+/* Mini Progress Bars */
+.skill-bar-item {
+  margin-bottom: 15px;
+}
+.bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+.s-progress-bg {
+  width: 100%;
+  height: 6px;
+  background-color: #1a1a1a;
+}
+
+/* PERBAIKAN DI SINI: Tambahkan width: 0 dan transition agar garis bisa bergerak */
+.s-progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--cyan) 0%, #0088ff 100%);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+  transition: width 1.2s cubic-bezier(0.65, 0, 0.15, 1);
+}
+/* Responsif */
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-card {
+    min-height: 400px;
+  }
+}
+
+/* Animasi ketika di-scroll (dipicu oleh JS) */
+.branch-item.show-branch {
+  animation: slideInBranch 0.6s cubic-bezier(0.65, 0, 0.15, 1) forwards;
+}
+
+/* Mengatur jeda (delay) agar muncul berurutan (staggered) dari 1 sampai 4 */
+.branch-item:nth-child(1).show-branch {
+  animation-delay: 0.1s;
+}
+.branch-item:nth-child(2).show-branch {
+  animation-delay: 0.3s;
+}
+.branch-item:nth-child(3).show-branch {
+  animation-delay: 0.5s;
+}
+.branch-item:nth-child(4).show-branch {
+  animation-delay: 0.7s;
+}
+
+/* Keyframes efek meluncur dari kanan ke kiri */
+@keyframes slideInBranch {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hilangkan cursor bawaan */
+body {
+  cursor: none;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  cursor: none;
+}
+
+/* =========================================
+   SNIPER TARGET CUSTOM CURSOR (CYBER SAMURAI)
+========================================= */
+#custom-cursor,
+#custom-cursor * {
+  pointer-events: none; /* Wajib, agar kursor tidak nge-block klik */
+}
+
+#custom-cursor {
+  position: fixed;
+  width: 54px;
+  height: 54px;
+  /* HAPUS: left: 0; top: 0; */ /* Kita atur posisinya full via JS transform */
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  
+  /* HAPUS transisi transform di sini, karena JS yang akan mengaturnya secara live */
+  /* transition: transform 0.22s cubic-bezier(0.18, 0.89, 0.32, 1.25), opacity 0.2s ease; */
+  transition: opacity 0.2s ease; /* Hanya transisi opacity yang tersisa */
+  
+  /* Hardware Acceleration: Minta browser pakai GPU untuk performa maksimal */
+  will-change: transform; 
+}
+
+/* ========================================================
+   PERAKITAN CROSSHAIR & RING BERPUTAR (SATU KESATUAN)
+======================================================== */
+.sniper-spin-assembly {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  animation: sniperSpin 6s linear infinite;
+  transition: transform 0.22s ease;
+}
+
+/* Ring Sniper Dalam (Ikut Berputar dengan Garis) */
+.cursor-ring {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid rgba(255, 23, 68, 0.85);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    width 0.22s ease,
+    height 0.22s ease;
+}
+
+/* 4 Garis Lurus Crosshair Bidikan Sniper (Atas, Bawah, Kiri, Kanan) */
+.cursor-line {
+  position: absolute;
+  background: #ff1744;
+  transition:
+    background-color 0.22s ease,
+    box-shadow 0.22s ease,
+    height 0.22s ease,
+    width 0.22s ease;
+}
+
+/* Garis Atas: Menembus cincin dan ikut berputar */
+.line-top {
+  width: 1.5px;
+  height: 11px;
+  left: 50%;
+  top: 2px;
+  transform: translateX(-50%);
+}
+
+/* Garis Bawah: Menembus cincin dan ikut berputar */
+.line-bottom {
+  width: 1.5px;
+  height: 11px;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+}
+
+/* Garis Kiri: Menembus cincin dan ikut berputar */
+.line-left {
+  width: 11px;
+  height: 1.5px;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Garis Kanan: Menembus cincin dan ikut berputar */
+.line-right {
+  width: 11px;
+  height: 1.5px;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Ring Sniper Luar (Dial Scope Berputar Berlawanan Arah) */
+.sniper-outer-ring {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(255, 23, 68, 0.45);
+  border-radius: 50%;
+  animation: sniperCounterSpin 10s linear infinite;
+  transition:
+    border-color 0.22s ease,
+    opacity 0.22s ease;
+}
+
+/* 4 Sudut Bracket Target Sniper Game [  ] */
+.sniper-brackets {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.22s cubic-bezier(0.18, 0.89, 0.32, 1.25);
+}
+
+.sniper-brackets .bracket {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(255, 23, 68, 0.65);
+  border-style: solid;
+  border-width: 0;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.bracket-tl {
+  top: 2px;
+  left: 2px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.bracket-tr {
+  top: 2px;
+  right: 2px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.bracket-bl {
+  bottom: 2px;
+  left: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.bracket-br {
+  bottom: 2px;
+  right: 2px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* Status Digital HUD Scope Sniper */
+.sniper-hud {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: rgba(255, 23, 68, 0.7);
+  white-space: nowrap;
+  text-shadow: 0 0 5px rgba(255, 23, 68, 0.6);
+  pointer-events: none;
+  transition:
+    color 0.22s ease,
+    text-shadow 0.22s ease;
+}
+
+/* Keyframes Rotasi Bidikan Sniper (Crosshair & Cincin Berputar Bersama) */
+@keyframes sniperSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sniperCounterSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes sniperLockPulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.82);
+  }
+}
+
+/* ========================================================
+   1. EFEK HOVER UMUM (TOMBOL & ELEMEN INTERAKTIF)
+======================================================== */
+#custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(1.35);
+}
+
+#custom-cursor.hover .cursor-dot {
+  background: #5c0107;
+  box-shadow: 0 0 10px #00e5ff;
+}
+
+/* Perakitan Garis dan Cincin Berputar Lebih Cepat */
+#custom-cursor.hover .sniper-spin-assembly {
+  animation: sniperSpin 2s linear infinite;
+}
+
+#custom-cursor.hover .cursor-ring {
+  border-color: #00e5ff;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+}
+
+#custom-cursor.hover .cursor-line {
+  background: #00e5ff;
+  box-shadow: 0 0 8px #00e5ff;
+}
+
+#custom-cursor.hover .sniper-outer-ring {
+  border-color: rgba(0, 229, 255, 0.6);
+  animation: sniperCounterSpin 4.5s linear infinite;
+}
+
+#custom-cursor.hover .bracket {
+  border-color: #00e5ff;
+}
+
+#custom-cursor.hover .sniper-hud {
+  color: #00e5ff;
+  text-shadow: 0 0 6px #00e5ff;
+}
+
+/* ========================================================
+   2. EFEK HOVER KHUSUS PADA LINK NAVIGASI (MEMBESAR & BERPUTAR CEPAT)
+======================================================== */
+#custom-cursor.hover-nav {
+  transform: translate(-50%, -50%) scale(1.7);
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.75));
+}
+
+#custom-cursor.hover-nav .cursor-dot {
+  background: #00e5ff;
+  box-shadow:
+    0 0 14px #00e5ff,
+    0 0 24px rgba(0, 229, 255, 0.9);
+}
+
+/* Cincin & 4 Garis Lurus Berputar Cepat Bersama-sama Saat Mengunci Navigasi */
+#custom-cursor.hover-nav .sniper-spin-assembly {
+  animation: sniperSpin 2s linear infinite;
+}
+
+#custom-cursor.hover-nav .cursor-ring {
+  width: 32px;
+  height: 32px;
+  border-color: #00e5ff;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  box-shadow:
+    0 0 18px rgba(0, 229, 255, 0.8),
+    inset 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+#custom-cursor.hover-nav .cursor-line {
+  background: #00e5ff;
+  box-shadow: 0 0 12px #00e5ff;
+}
+
+/* Dial Luar Scope Berputar Berlawanan Arah Secara Dinamis */
+#custom-cursor.hover-nav .sniper-outer-ring {
+  border-color: rgba(0, 229, 255, 0.95);
+  border-style: solid;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  animation: sniperCounterSpin 1.8s linear infinite;
+}
+
+/* 4 Sudut Bracket Mengunci & Berdenyut Menargetkan Link */
+#custom-cursor.hover-nav .sniper-brackets {
+  animation: sniperLockPulse 0.7s ease-in-out infinite alternate;
+}
+
+#custom-cursor.hover-nav .bracket {
+  border-color: #00e5ff;
+  box-shadow: 0 0 8px #00e5ff;
+}
+
+#custom-cursor.hover-nav .sniper-hud {
+  color: #00e5ff;
+  text-shadow:
+    0 0 12px #00e5ff,
+    0 0 20px rgba(0, 229, 255, 0.9);
+  letter-spacing: 2.5px;
+}

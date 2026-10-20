@@ -1,0 +1,233 @@
+/* =========================================
+   CSS VARIABLES & RESET
+========================================= */
+:root {
+    --bg-color: #030303;
+    --accent-red: #c90014;
+    --accent-red-dim: rgba(201, 0, 20, 0.3);
+    --accent-blue: #0055ff;
+    --text-white: #ffffff;
+    --text-grey: #5a5a5a;
+    --text-dark-bg: #0a0505;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* =========================================
+   DECORATIONS (Background, Lines, Corners)
+========================================= */
+.corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: var(--accent-red-dim);
+    border-style: solid;
+    border-width: 0;
+}
+
+.top-left {
+    top: 20px;
+    left: 20px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.top-right {
+    top: 20px;
+    right: 20px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.bottom-left {
+    bottom: 20px;
+    left: 20px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}
+
+/* =========================================
+   GARIS PEMISAH (GERBANG ARENA)
+========================================= */
+.center-line-left,
+.center-line-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: var(--accent-red-dim);
+    z-index: 0;
+    /* Durasi diubah dari 1.2s menjadi 2.5s agar pergerakannya lebih lambat dan dramatis */
+    transition: transform 2.5s cubic-bezier(0.65, 0, 0.15, 1);
+}
+
+.center-line-left { transform: translateX(-50%); }
+.center-line-right { transform: translateX(-50%); }
+
+/* Bagian opacity dihapus agar garis tetap solid dan tidak menghilang di tengah jalan */
+.center-line-left.open-gate { 
+    transform: translateX(-50vw); 
+}
+.center-line-right.open-gate { 
+    transform: translateX(50vw); 
+}
+
+.bg-kanji {
+    position: absolute;
+    bottom: -5vh;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 25vw;
+    color: var(--text-dark-bg);
+    font-weight: 700;
+    z-index: -1;
+    line-height: 1;
+    user-select: none;
+}
+
+.bg-kanji.left { left: 2vw; }
+.bg-kanji.right { right: 2vw; }
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+.main-container {
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo Section */
+.logo-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.sword-icon {
+    width: 16px;
+    height: auto;
+    fill: var(--accent-red);
+}
+
+h1.title {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Subtitle */
+h2.subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--accent-red);
+    font-size: 0.9rem;
+    letter-spacing: 12px;
+    margin-left: 12px;
+    margin-bottom: 25px;
+}
+
+/* Gradient Line */
+.gradient-line {
+    width: 250px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-red) 0%, var(--accent-blue) 100%);
+    margin: 0 auto 25px auto;
+}
+
+/* System Status Text */
+.system-status {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text-grey);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 35px;
+}
+
+/* Cyberpunk Button */
+.cyber-button {
+    background-color: #9e000e;
+    color: var(--text-white);
+    border: none;
+    padding: 16px 45px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    /* Efek potongan di sudut kanan bawah */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.cyber-button:hover {
+    background-color: var(--accent-red);
+    transform: scale(1.05);
+}
+
+.cyber-button .btn-icon {
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+/* Hint Text */
+.hint-text {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-grey);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: slowBlink 3s infinite ease-in-out;
+}
+
+.hint-text span {
+    font-size: 0.6rem;
+    margin-right: 5px;
+}
+
+/* Efek memudarkan seluruh layar ke hitam */
+.page-fade-out {
+    opacity: 0;
+    background-color: #000;
+    transition: opacity 0.8s ease-in-out, background-color 0.8s ease-in-out;
+}
+
+/* Animasi berkedip lambat untuk Hint Text */
+@keyframes slowBlink {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; } /* Mengubah transparansi menjadi 20% di pertengahan animasi */
+    100% { opacity: 1; }
+}

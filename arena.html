@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AETHERA - Portfolio Arena</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Share+Tech+Mono&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- Hubungkan CSS -->
+    <link rel="stylesheet" href="arena.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">AETHERA<span class="dot">.</span></div>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="#">Experience</a></li>
+        <li><a href="#">Certificate</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+        <button class="mute-btn" id="muteBtn">
+            <svg id="speakerIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+        </button>
+
+    </nav>
+
+    <!-- Main Content -->
+    <main class="arena-container">
+      <!-- Kolom Kiri: Teks & Info -->
+      <div class="left-section">
+        <div class="badge-role"><span class="red-dot"></span> TEKNIK INFORMATIKA</div>
+
+        <p class="greeting">Hi, saya Wira </p>
+
+        <h1 class="hero-name">PUTU WIRA SAPUTRA</h1>
+
+        <h2 class="typewriter"><span id="typed-text"></span><span class="cursor">|</span></h2>
+
+        <p class="description">
+          specialize in troubleshooting and repairing software and hardware for Android and Apple devices. Complementing my hands-on technical background, my studies in Informatics equip me with strong coding skills and a keen eye for UI/UX
+          design, allowing me to build and design intuitive, user-centric digital solutions
+        </p>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary">LIHAT PORTFOLIO</button>
+          <button class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            DOWNLOAD CV
+          </button>
+          <button class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            HUBUNGI SAYA
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3>2+</h3>
+            <p>Tahun<br />Pengalaman</p>
+          </div>
+          <div class="stat-item">
+            <h3>10+</h3>
+            <p>Project Selesai</p>
+          </div>
+          <div class="stat-item">
+            <h3>15+</h3>
+            <p>Tech Stack<br />Dikuasai</p>
+          </div>
+          <div class="stat-item">
+            <h3>2</h3>
+            <p>Sertifikasi</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kolom Kanan: Gambar Profil -->
+      <div class="right-section">
+        <div class="tech-frame">
+          <div class="frame-corner top-left"></div>
+          <div class="frame-corner top-right"></div>
+          <div class="frame-corner bottom-left"></div>
+          <div class="frame-corner bottom-right"></div>
+
+          <div class="tag-top-right">| FULLSTACK DEV</div>
+          <img src="images/images (14).jpeg" alt="Foto Profil" class="profile-img" />
+
+          <div class="tag-bottom-left"><span class="green-dot"></span> ONLINE</div>
+        </div>
+        <p class="hint-hover">⚔ ARAHKAN KURSOR UNTUK NGOBROL</p>
+      </div>
+
+      <!-- Elemen Audio tersembunyi -->
+        <audio id="bgMusic" loop>
+            <source src="timeless.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+        </audio>
+    </main>
+    
+
+    <script src="arena.js"></script>
+  </body>
+</html>

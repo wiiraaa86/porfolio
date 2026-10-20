@@ -1,0 +1,348 @@
+:root {
+    --bg-dark: #070707;
+    --red-main: #c90014;
+    --red-dim: rgba(201, 0, 20, 0.15);
+    --cyan: #00e5ff;
+    --text-white: #f0f0f0;
+    --text-grey: #a0a0a0;
+    --border-color: #2a2a2a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Membuat latar belakang grid ala Cyberpunk */
+    background-image: 
+        linear-gradient(var(--red-dim) 1px, transparent 1px),
+        linear-gradient(90deg, var(--red-dim) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center;
+}
+
+/* ================== NAVBAR ================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+.logo .dot { color: var(--cyan); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.mute-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-white);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.mute-btn:hover { border-color: var(--text-white); }
+
+/* ================== MAIN CONTENT ================== */
+.arena-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 10%;
+    gap: 50px;
+    min-height: calc(100vh - 100px);
+}
+
+.left-section {
+    flex: 1;
+    max-width: 600px;
+}
+
+/* Teks dan Tipografi */
+.badge-role {
+    display: inline-block;
+    background-color: rgba(201, 0, 20, 0.1);
+    color: var(--red-main);
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-family: 'Share Tech Mono', monospace;
+    border: 1px solid var(--red-dim);
+    margin-bottom: 20px;
+}
+.red-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background-color: var(--red-main);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.greeting {
+    color: var(--cyan);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.hero-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.typewriter {
+    color: var(--red-main);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+.cursor { animation: blink 1s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.description {
+    color: var(--text-grey);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* Tombol Aksi */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.btn {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--red-main);
+    color: white;
+    border: 1px solid var(--red-main);
+    /* Efek clip-path (potongan sudut) ala cyberpunk */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+}
+.btn-primary:hover { background-color: #a00010; }
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--border-color);
+}
+.btn-outline:hover {
+    border-color: var(--text-grey);
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* Stats */
+.stats-grid {
+    display: flex;
+    gap: 40px;
+}
+.stat-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+.stat-item p {
+    color: var(--text-grey);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* ================== RIGHT SECTION (IMAGE) ================== */
+.right-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tech-frame {
+    position: relative;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(0,0,0,0.5);
+    width: 380px;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.1) brightness(0.9);
+}
+
+/* Hiasan Sudut Bingkai (Brackets) */
+.frame-corner {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-color: var(--red-main);
+    border-style: solid;
+    border-width: 0;
+    z-index: 5;
+}
+.top-left { top: -2px; left: -2px; border-top-width: 2px; border-left-width: 2px; }
+.top-right { top: -2px; right: -2px; border-top-width: 2px; border-right-width: 2px; }
+.bottom-left { bottom: -2px; left: -2px; border-bottom-width: 2px; border-left-width: 2px; }
+.bottom-right { bottom: -2px; right: -2px; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* Tag Info di Foto */
+.tag-top-right {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background-color: #000;
+    border: 1px solid var(--red-main);
+    color: var(--red-main);
+    padding: 4px 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    z-index: 10;
+}
+
+.tag-bottom-left {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00ff88;
+    color: #00ff88;
+    padding: 6px 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+.green-dot {
+    width: 8px; height: 8px;
+    background-color: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00ff88;
+}
+
+.hint-hover {
+    font-family: 'Share Tech Mono', monospace;
+    color: #ff0000;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    animation: floating 4s ease-in-out infinite, hintBlink 2s ease-in-out infinite;
+}
+
+/* ================== ANIMASI MASUK (ENTRY ANIMATIONS) ================== */
+
+/* 1. Halaman perlahan muncul dari gelap */
+body {
+    opacity: 0;
+    animation: fadeInPage 1s ease-in-out forwards;
+}
+
+/* 2. Navbar meluncur dari atas */
+.navbar {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: slideDown 0.8s ease-out 0.3s forwards; /* Delay 0.3 detik */
+}
+
+/* 3. Konten Teks meluncur dari kiri */
+.left-section {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideRight 0.8s ease-out 0.6s forwards; /* Delay 0.6 detik */
+}
+
+/* 4. Konten Foto meluncur dari kanan */
+.right-section {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideLeft 0.8s ease-out 0.9s forwards; /* Delay 0.9 detik */
+}
+
+/* Kumpulan Keyframes (Penggerak Animasi) */
+@keyframes fadeInPage {
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes slideRight {
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes slideLeft {
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+/* Efek Melayang (Floating) untuk Foto Profil */
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); } /* Bergerak ke atas 15px */
+    100% { transform: translateY(0); } /* Kembali ke posisi semula */
+}
+
